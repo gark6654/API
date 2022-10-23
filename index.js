@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { mongoURL } = require('./config');
 
 const indexRouter = require('./routes/index');
-const authRouter = require('./routes/auth.routes');
+const authRouter = require('./routes/auth.route');
 const usersRouter = require('./routes/users.route');
 const meRouter = require('./routes/me.route');
 const blogsRouter = require('./routes/blogs.route');
