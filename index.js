@@ -1,6 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const { mongoURL } = require('./config');
 
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth.routes');
@@ -9,7 +10,6 @@ const meRouter = require('./routes/me.route');
 const blogsRouter = require('./routes/blogs.route');
 
 const port = 3000;
-
 const app = express();
 
 app.use(express.json());
@@ -25,7 +25,7 @@ app.use('/api/blogs', blogsRouter);
 app.listen(port, async () => {
   try {
     console.log('Try to start service...');
-    await mongoose.connect('mongodb://127.0.0.1:27017/test');
+    await mongoose.connect(mongoURL);
     console.log(`App listen to ${port} port`);
   } catch (e) {
     console.log(e);
