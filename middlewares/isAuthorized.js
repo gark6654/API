@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
     const accessToken = req.headers.authorization?.replace('Bearer ', '');
     if (!accessToken) {
       return res.status(403).json({
-        message: 'Unauthorized',
+        message: 'No auth token provided',
       });
     }
 
@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
 
     if (!user) {
       return res.status(403).json({
-        message: 'Unauthorized',
+        message: 'No auth token provided',
       });
     }
 
