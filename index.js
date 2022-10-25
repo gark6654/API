@@ -1,7 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
-const { mongoURL } = require('./config');
+const { mongoURL } = require('./constants/config');
 
 const indexRouter = require('./routes/index');
 const authRouter = require('./routes/auth.route');

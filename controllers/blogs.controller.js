@@ -1,3 +1,4 @@
+const { userPublicFields } = require('../constants/fields');
 const Blog = require('../models/blog.model');
 
 /**
@@ -30,7 +31,7 @@ const returnAll = async (req, res, next) => {
 const returnById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const data = await Blog.findById(id).populate('user', ['firstname','lastname', 'email']);
+    const data = await Blog.findById(id).populate('user', userPublicFields);
 
     if (!data) {
       return res.status(500).json({

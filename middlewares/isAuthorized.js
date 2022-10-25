@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const { jwtSecret } = require('../config');
+const { jwtSecret } = require('../constants/config');
 const User = require('../models/user.model');
 
 module.exports = async (req, res, next) => {
@@ -16,7 +16,7 @@ module.exports = async (req, res, next) => {
 
     if (!user) {
       return res.status(403).json({
-        message: 'No auth token provided',
+        message: 'Invalid auth token',
       });
     }
 
