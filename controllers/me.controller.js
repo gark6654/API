@@ -1,4 +1,22 @@
+const User = require('../models/user.model');
 const Blog = require('../models/blog.model');
+
+const returnAuthUser = async (req, res, next) => {
+  try {
+    const { _id } = req.user;
+    const user = await User.findById(_id);
+
+    res.status(200).json(user);
+
+  } catch (e) {
+    res.status(500).json({
+      success: false,
+      message: e.message ? e.message : e,
+    });
+
+    console.log('route GET => /api/me/user', e);
+  }
+};
 
 /**
  * GET /me/blogs - Return logged user blogs
@@ -23,5 +41,6 @@ const returnUserBlogs = async (req, res, next) => {
 };
 
 module.exports = {
-  returnUserBlogs
+  returnAuthUser,
+  returnUserBlogs,
 };

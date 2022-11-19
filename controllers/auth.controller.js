@@ -15,8 +15,8 @@ const login = async (req, res, next) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(500).json({
-        message: `Can't find user by ${email}`,
+      return res.status(403).json({
+        message: 'Wrong password or email',
       });
     }
 
